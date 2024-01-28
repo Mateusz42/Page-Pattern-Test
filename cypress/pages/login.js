@@ -1,24 +1,42 @@
-class login {
-    navigate() {
-        cy.visit("https://www.edu.goit.global/account/login");
+class LoginPage {
+    visit() {
+      cy.visit("https://www.edu.goit.global/account/login");
     }
-
-    validateLoginTitle() {
-        cy.get(".css-10stgr7 > .css-c1vj7d").should("be.visible");
-        cy.get(".css-10stgr7 > .css-c1vj7d").should("have.text", "Login");
+  
+    getLoginHeader() {
+      return cy.get(".css-10stgr7 > .css-c1vj7d");
     }
-
-    validateLoginInputs() {
-        cy.get("#user_email").should("be.visible");
-        cy.get("#user_password").should("be.visible");
+  
+    getEmailInput() {
+      return cy.get("#user_email");
     }
-    validateButton() {
-        cy.get(".eckniwg2").should("be.visible");
+  
+    getPasswordInput() {
+      return cy.get("#user_password");
     }
-    validatePasswordLink() {
-        cy.get(".css-1f1fv1i > .css-1qrvie4").should("be.visible");
-        cy.get(".css-1f1fv1i >.css-1qrvie4").should("have.text", "I can't remember the password");
-
+  
+    getLoginButton() {
+      return cy.get(".eckniwg2");
     }
+  
+    getForgotPasswordLink() {
+      return cy.get(".css-1f1fv1i > .css-1qrvie4");
+    }
+    get loginButton() {
+      return cy.get('button[type="submit"]');
+  }
+  get emailInput() {
+      return cy.get('#user_email');
+  }
+  get passwordInput() {
+      return cy.get('[name="password"]');
+  }
+  loginUser(emal, password) {
+this.emailInput.type(email);
+this.passwordInput.type(password);
+this.loginButton.click();
+cy.url().should('include', 'homepage');
 }
-export default login;
+  }
+  
+  export default LoginPage;
