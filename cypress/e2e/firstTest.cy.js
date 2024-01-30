@@ -16,8 +16,10 @@ describe("Page object example", () => {
 it('Successfully navigates to The GoIt page' , () => {
   cy.url().should('include' , 'account/login')
  });
-it('Successfully login to GoIt page', () => {
-  cy.loginUser('testowyqa@qa.team',' QA!automation-1');
- 
+   it('should log in the second user successfully', () => {
+  loginPage.visit();
+  loginPage.fillEmail('testowyqa@qa.team');
+  loginPage.fillPassword(' QA!automation-1');
+  loginPage.submit();
 });
 })
