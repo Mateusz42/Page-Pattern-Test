@@ -22,4 +22,7 @@ it('Successfully navigates to The GoIt page' , () => {
   loginPage.fillPassword(' QA!automation-1');
   loginPage.submit();
 });
-})
+   afterEach(() => {
+    loginPage.logOut();
+  });
+});
